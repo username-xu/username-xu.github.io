@@ -7,24 +7,24 @@
     <title>transform关于先平移后旋转和先旋转后平移的问题！ | 摸索者</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
-    <meta name="author" content="John Doe">
+    <meta name="author" content="xu">
     
 
     
-    <meta name="description" content="transform属性关于先平移后旋转和先旋转后平移的问题!先平移后旋转1transform: translate(100px) rotate(45deg); 原图: 最后效果: 实现过程为: 先在X轴的正方向上平移100px，再顺时针旋转45度。 先旋转后平移1transform: translate(100px) rotate(45deg); 原图: 最后效果: 实现过程: 先顺时针旋转45度">
+    <meta name="description" content="transform属性关于先平移后旋转和先旋转后平移的问题!1.先平移后旋转1transform: translate(100px) rotate(45deg); 原图: 最后效果: 实现过程: 先在X轴的正方向上平移100px，再顺时针旋转45度。 2.先旋转后平移1transform: rotate(45deg) translate(100px); 原图: 最后效果: 实现过程: 先顺时针旋转">
 <meta property="og:type" content="article">
 <meta property="og:title" content="transform关于先平移后旋转和先旋转后平移的问题！">
 <meta property="og:url" content="http://yoursite.com/2017/06/03/transform关于先平移后旋转和先旋转后平移的问题！/index.html">
 <meta property="og:site_name" content="摸索者">
-<meta property="og:description" content="transform属性关于先平移后旋转和先旋转后平移的问题!先平移后旋转1transform: translate(100px) rotate(45deg); 原图: 最后效果: 实现过程为: 先在X轴的正方向上平移100px，再顺时针旋转45度。 先旋转后平移1transform: translate(100px) rotate(45deg); 原图: 最后效果: 实现过程: 先顺时针旋转45度">
+<meta property="og:description" content="transform属性关于先平移后旋转和先旋转后平移的问题!1.先平移后旋转1transform: translate(100px) rotate(45deg); 原图: 最后效果: 实现过程: 先在X轴的正方向上平移100px，再顺时针旋转45度。 2.先旋转后平移1transform: rotate(45deg) translate(100px); 原图: 最后效果: 实现过程: 先顺时针旋转">
 <meta property="og:image" content="http://yoursite.com/2017/06/03/transform关于先平移后旋转和先旋转后平移的问题！/img/transform1.png">
 <meta property="og:image" content="http://yoursite.com/2017/06/03/transform关于先平移后旋转和先旋转后平移的问题！/img/transform2.png">
 <meta property="og:image" content="http://yoursite.com/2017/06/03/transform关于先平移后旋转和先旋转后平移的问题！/img/transform1.png">
 <meta property="og:image" content="http://yoursite.com/2017/06/03/transform关于先平移后旋转和先旋转后平移的问题！/img/transform3.png">
-<meta property="og:updated_time" content="2017-06-03T11:09:53.374Z">
+<meta property="og:updated_time" content="2017-06-03T11:22:44.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="transform关于先平移后旋转和先旋转后平移的问题！">
-<meta name="twitter:description" content="transform属性关于先平移后旋转和先旋转后平移的问题!先平移后旋转1transform: translate(100px) rotate(45deg); 原图: 最后效果: 实现过程为: 先在X轴的正方向上平移100px，再顺时针旋转45度。 先旋转后平移1transform: translate(100px) rotate(45deg); 原图: 最后效果: 实现过程: 先顺时针旋转45度">
+<meta name="twitter:description" content="transform属性关于先平移后旋转和先旋转后平移的问题!1.先平移后旋转1transform: translate(100px) rotate(45deg); 原图: 最后效果: 实现过程: 先在X轴的正方向上平移100px，再顺时针旋转45度。 2.先旋转后平移1transform: rotate(45deg) translate(100px); 原图: 最后效果: 实现过程: 先顺时针旋转">
 <meta name="twitter:image" content="http://yoursite.com/2017/06/03/transform关于先平移后旋转和先旋转后平移的问题！/img/transform1.png">
 
     
@@ -89,7 +89,7 @@
   </h1>
   <p class="article-author">By
        
-		<a href="/about" title="John Doe" target="_blank" itemprop="author">John Doe</a>
+		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
 		
   <p class="article-time">
     <time datetime="2017-06-03T10:53:57.000Z" itemprop="datePublished"> 发表于 2017-06-03</time>
@@ -101,17 +101,17 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#transform属性关于先平移后旋转和先旋转后平移的问题"><span class="toc-number">1.</span> <span class="toc-text">transform属性关于先平移后旋转和先旋转后平移的问题!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先平移后旋转"><span class="toc-number">1.1.</span> <span class="toc-text">先平移后旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先旋转后平移"><span class="toc-number">1.2.</span> <span class="toc-text">先旋转后平移</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#transform属性关于先平移后旋转和先旋转后平移的问题"><span class="toc-number">1.</span> <span class="toc-text">transform属性关于先平移后旋转和先旋转后平移的问题!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先平移后旋转"><span class="toc-number">1.1.</span> <span class="toc-text">1.先平移后旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-先旋转后平移"><span class="toc-number">1.2.</span> <span class="toc-text">2.先旋转后平移</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="transform属性关于先平移后旋转和先旋转后平移的问题"><a href="#transform属性关于先平移后旋转和先旋转后平移的问题" class="headerlink" title="transform属性关于先平移后旋转和先旋转后平移的问题!"></a>transform属性关于先平移后旋转和先旋转后平移的问题!</h2><h3 id="先平移后旋转"><a href="#先平移后旋转" class="headerlink" title="先平移后旋转"></a>先平移后旋转</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translate</span>(100<span class="selector-tag">px</span>) <span class="selector-tag">rotate</span>(45<span class="selector-tag">deg</span>);</div></pre></td></tr></table></figure>
+		<h2 id="transform属性关于先平移后旋转和先旋转后平移的问题"><a href="#transform属性关于先平移后旋转和先旋转后平移的问题" class="headerlink" title="transform属性关于先平移后旋转和先旋转后平移的问题!"></a>transform属性关于先平移后旋转和先旋转后平移的问题!</h2><h3 id="1-先平移后旋转"><a href="#1-先平移后旋转" class="headerlink" title="1.先平移后旋转"></a>1.先平移后旋转</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translate</span>(100<span class="selector-tag">px</span>) <span class="selector-tag">rotate</span>(45<span class="selector-tag">deg</span>);</div></pre></td></tr></table></figure>
 <p>原图:<br><img src="img/transform1.png" alt="transform"></p>
-<p>最后效果:<br><img src="img/transform2.png" alt="origin"></p>
-<p>实现过程为: 先在X轴的正方向上平移100px，再顺时针旋转45度。</p>
-<h3 id="先旋转后平移"><a href="#先旋转后平移" class="headerlink" title="先旋转后平移"></a>先旋转后平移</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translate</span>(100<span class="selector-tag">px</span>) <span class="selector-tag">rotate</span>(45<span class="selector-tag">deg</span>);</div></pre></td></tr></table></figure>
+<p>最后效果:<br><img src="img/transform2.png" alt="transform"></p>
+<p>实现过程: 先在X轴的正方向上平移100px，再顺时针旋转45度。</p>
+<h3 id="2-先旋转后平移"><a href="#2-先旋转后平移" class="headerlink" title="2.先旋转后平移"></a>2.先旋转后平移</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">rotate</span>(45<span class="selector-tag">deg</span>) <span class="selector-tag">translate</span>(100<span class="selector-tag">px</span>);</div></pre></td></tr></table></figure>
 <p>原图:<br><img src="img/transform1.png" alt="transform"></p>
-<p>最后效果:<br><img src="img/transform3.png" alt="origin"></p>
+<p>最后效果:<br><img src="img/transform3.png" alt="transform"></p>
 <p>实现过程: 先顺时针旋转45度，此时坐标系已跟着元素一起旋转了45度，再向已经改变的X轴正方向上平移100px。</p>
   
 	</div>
@@ -143,6 +143,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2017/06/16/页面跳转的实现方式/" title="简单实现点击后页面跳转的方法">
+  <strong>上一篇：</strong><br/>
+  <span>
+  简单实现点击后页面跳转的方法</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2017/06/01/transform属性中origin原点的取值/"  title="transform属性中origin原点的取值">
@@ -162,7 +170,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#transform属性关于先平移后旋转和先旋转后平移的问题"><span class="toc-number">1.</span> <span class="toc-text">transform属性关于先平移后旋转和先旋转后平移的问题!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#先平移后旋转"><span class="toc-number">1.1.</span> <span class="toc-text">先平移后旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#先旋转后平移"><span class="toc-number">1.2.</span> <span class="toc-text">先旋转后平移</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#transform属性关于先平移后旋转和先旋转后平移的问题"><span class="toc-number">1.</span> <span class="toc-text">transform属性关于先平移后旋转和先旋转后平移的问题!</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-先平移后旋转"><span class="toc-number">1.1.</span> <span class="toc-text">1.先平移后旋转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-先旋转后平移"><span class="toc-number">1.2.</span> <span class="toc-text">2.先旋转后平移</span></a></li></ol></li></ol>
  
   </div>
 
@@ -179,7 +187,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/技术控/" title="技术控">技术控<sup>5</sup></a></li>
+			<li><a href="/categories/技术控/" title="技术控">技术控<sup>6</sup></a></li>
 		  
 		
 		  
@@ -269,7 +277,7 @@
 		<p class="copyright">
 		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
 		
-		<a href="/about" target="_blank" title="John Doe">John Doe</a>
+		<a href="/about" target="_blank" title="xu">xu</a>
 		
 		
 		</p>
