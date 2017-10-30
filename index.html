@@ -81,6 +81,62 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/08/18/移动端判断滑屏的手势方向/" title="移动端判断滑屏的手势方向" itemprop="url">移动端判断滑屏的手势方向</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
+		
+  <p class="article-time">
+    <time datetime="2017-08-18T13:37:23.000Z" itemprop="datePublished"> 发表于 2017-08-18</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="移动端利用touch事件判断滑屏手势的方向"><a href="#移动端利用touch事件判断滑屏手势的方向" class="headerlink" title="移动端利用touch事件判断滑屏手势的方向"></a>移动端利用touch事件判断滑屏手势的方向</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断滑动方向</span></div><div class="line"><span class="keyword">var</span> startx, starty;</div><div class="line"></div><div class="line"><span class="comment">// 3、使用Math.atan2来计算起点与终点形成的直线角度。</span></div><div class="line"><span class="comment">// 获得角度</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAngle</span>(<span class="params">angx, angy</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.atan2(angy, angx) * <span class="number">180</span> / <span class="built_in">Math</span>.PI; <span class="comment">// Math.atan2() 获取从 x 轴到点 (x,y) 的角度;  Math.PI 圆周率</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 2、方向的判断：以起点做平面坐标系，与终点连线做直线，直线与x正半轴计算角度；我们以45度角为方向分割线，如：只要滑动角度大于等于45度且小于135度，则判断它方向为向上滑。</span></div><div class="line"><span class="comment">// 根据起点终点返回方向 1向上 2向下 3向左 4向右 0未滑动</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getDirection</span>(<span class="params">startx, starty, endx, endy</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> angx = endx - startx;</div><div class="line">    <span class="keyword">var</span> angy = endy - starty;</div><div class="line">    <span class="keyword">var</span> result = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="comment">// 如果滑动距离太短</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">Math</span>.abs(angx) &lt; <span class="number">2</span> &amp;&amp; <span class="built_in">Math</span>.abs(angy) &lt; <span class="number">2</span>) &#123; <span class="comment">// 	Math.abs() 获取数的绝对值。</span></div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> angle = getAngle(angx, angy);</div><div class="line">    <span class="keyword">if</span> (angle &gt;= <span class="number">-135</span> &amp;&amp; angle &lt;= <span class="number">-45</span>) &#123;</div><div class="line">        result = <span class="number">1</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (angle &gt; <span class="number">45</span> &amp;&amp; angle &lt; <span class="number">135</span>) &#123;</div><div class="line">        result = <span class="number">2</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ((angle &gt;= <span class="number">135</span> &amp;&amp; angle &lt;= <span class="number">180</span>) || (angle &gt;= <span class="number">-180</span> &amp;&amp; angle &lt; <span class="number">-135</span>)) &#123;</div><div class="line">        result = <span class="number">3</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (angle &gt;= <span class="number">-45</span> &amp;&amp; angle &lt;= <span class="number">45</span>) &#123;</div><div class="line">        result = <span class="number">4</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 1、手指在屏幕上滑动时，使用H5中的touchstart滑动开始事件和touchmove滑动中事件，获取开始时的坐标和滑动过程中的坐标；</span></div><div class="line"><span class="comment">// 手指接触屏幕</span></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"touchstart"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">    startx = e.touches[<span class="number">0</span>].pageX;</div><div class="line">    starty = e.touches[<span class="number">0</span>].pageY;</div><div class="line">&#125;, <span class="literal">false</span>);</div><div class="line"></div><div class="line"><span class="comment">// 手指在屏幕上移动</span></div><div class="line"><span class="built_in">document</span>.addEventListener(<span class="string">"touchmove"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> endx, endy;</div><div class="line">    endx = e.changedTouches[<span class="number">0</span>].pageX;</div><div class="line">    endy = e.changedTouches[<span class="number">0</span>].pageY;</div><div class="line">    <span class="keyword">var</span> direction = getDirection(startx, starty, endx, endy);</div><div class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">switch</span> (direction) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">                <span class="comment">// alert("未滑动！");</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">                <span class="comment">// alert("向上！")</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">                <span class="comment">// alert("向下！")</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">                <span class="comment">// alert("向左！")</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">                <span class="comment">// alert("向右！")</span></div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">        &#125;</div><div class="line">    &#125;,<span class="number">50</span>)</div><div class="line">&#125;, <span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p>更多详情，请参考<a href="http://www.cnblogs.com/yangmengsheng/p/5973487.html" target="_blank" rel="external">H5案例分享：移动端touch事件判断滑屏手势的方向</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术控/">技术控</a>
+</div>
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/07/28/解决移动端iPhone设备点击时出现的半透明的背景/" title="解决移动端iPhone设备点击时出现的半透明的背景" itemprop="url">解决移动端iPhone设备点击时出现的半透明的背景</a>
   </h1>
   <p class="article-author">By
@@ -637,66 +693,10 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/05/23/这是我的第一篇博客/" title="这是我的第一篇博客" itemprop="url">这是我的第一篇博客</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
-		
-  <p class="article-time">
-    <time datetime="2017-05-23T13:33:52.000Z" itemprop="datePublished"> 发表于 2017-05-23</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h2><p>主要想分享一些好的文章，一些好的感悟，和一些自己遇到的坑。<br>不管写的好不好，希望自己能坚持下来。</p>
 
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/生活控/">生活控</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/新人报道/">新人报道</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
+  <nav id="page-nav" class="clearfix">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+  </nav>
 
 </div>
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
@@ -714,7 +714,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/技术控/" title="技术控">技术控<sup>8</sup></a></li>
+			<li><a href="/categories/技术控/" title="技术控">技术控<sup>9</sup></a></li>
 		  
 		
 		  
