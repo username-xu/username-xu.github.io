@@ -81,6 +81,64 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/07/28/解决移动端iPhone设备点击时出现的半透明的背景/" title="解决移动端iPhone设备点击时出现的半透明的背景" itemprop="url">解决移动端iPhone设备点击时出现的半透明的背景</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-28T03:46:28.000Z" itemprop="datePublished"> 发表于 2017-07-28</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>说一个最近移动端项目中遇到的问题，在一栏通过七个圆形按钮选择星期，在iPhone设备下点击其中一个按钮时，会出现一个半透明的背景。</p>
+<h3 id="解决办法-webkit-tap-highlight-color"><a href="#解决办法-webkit-tap-highlight-color" class="headerlink" title="解决办法 -webkit-tap-highlight-color"></a>解决办法 -webkit-tap-highlight-color</h3><p>-webkit-tap-highlight-color是css3的新属性，这个属性只用于iOS (iPhone和iPad)。当你点击一个链接或者通过Javascript定义的可点击元素的时候，它就会出现一个半透明的灰色背景。要重设这个表现，你可以设置-webkit-tap-highlight-color为任何颜色。想要禁用这个高亮，设置颜色的alpha值为0即可。</p>
+<p>如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span>,</div><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">    <span class="attribute">-webkit-tap-highlight-color</span>: <span class="built_in">rgba</span>(0, 0, 0, 0);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这篇文章带你了解跟多css3的冷门属性，<a href="http://www.cnblogs.com/cosiray/archive/2012/12/06/2804770.html" target="_blank" rel="external">CSS3那些不为人知的高级属性</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术控/">技术控</a>
+</div>
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/06/28/遇到的button按钮/" title="button按钮的注意处" itemprop="url">button按钮的注意处</a>
   </h1>
   <p class="article-author">By
@@ -656,7 +714,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/技术控/" title="技术控">技术控<sup>7</sup></a></li>
+			<li><a href="/categories/技术控/" title="技术控">技术控<sup>8</sup></a></li>
 		  
 		
 		  
