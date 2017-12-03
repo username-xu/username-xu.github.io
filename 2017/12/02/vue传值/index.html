@@ -1,0 +1,477 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>vue传值 | Ordinary road</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="xu">
+    
+
+    
+    <meta name="description" content="1.路由传值a.在 main.js routes 中配置路由匹配规则123456  routes: [  &amp;#123;    path: &apos;/xxx/:id&apos;,    component: xxx  &amp;#125;] b.在点击跳转的 router-link 标签中写上路径和参数1&amp;lt;router-link :to=&quot;&apos;/xxx/&apos; + this.id&quot;&amp;gt;&amp;lt;/router-link&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue传值">
+<meta property="og:url" content="http://yoursite.com/2017/12/02/vue传值/index.html">
+<meta property="og:site_name" content="Ordinary road">
+<meta property="og:description" content="1.路由传值a.在 main.js routes 中配置路由匹配规则123456  routes: [  &amp;#123;    path: &apos;/xxx/:id&apos;,    component: xxx  &amp;#125;] b.在点击跳转的 router-link 标签中写上路径和参数1&amp;lt;router-link :to=&quot;&apos;/xxx/&apos; + this.id&quot;&amp;gt;&amp;lt;/router-link&amp;">
+<meta property="og:updated_time" content="2017-12-03T11:43:52.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue传值">
+<meta name="twitter:description" content="1.路由传值a.在 main.js routes 中配置路由匹配规则123456  routes: [  &amp;#123;    path: &apos;/xxx/:id&apos;,    component: xxx  &amp;#125;] b.在点击跳转的 router-link 标签中写上路径和参数1&amp;lt;router-link :to=&quot;&apos;/xxx/&apos; + this.id&quot;&amp;gt;&amp;lt;/router-link&amp;">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Ordinary road" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Ordinary road" title="Ordinary road"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Ordinary road">Ordinary road</a></h1>
+				<h2 class="blog-motto">HTML ,CSS ,javaScripr</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/12/02/vue传值/" title="vue传值" itemprop="url">vue传值</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
+		
+  <p class="article-time">
+    <time datetime="2017-12-02T08:14:08.000Z" itemprop="datePublished"> 发表于 2017-12-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-路由传值"><span class="toc-number">1.</span> <span class="toc-text">1.路由传值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-父组件向子组件传值"><span class="toc-number">2.</span> <span class="toc-text">2.父组件向子组件传值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-子组件向父组件传值"><span class="toc-number">3.</span> <span class="toc-text">3.子组件向父组件传值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-非父子组件传值"><span class="toc-number">4.</span> <span class="toc-text">4.非父子组件传值</span></a></li></ol>
+		
+		</div>
+		
+		<h4 id="1-路由传值"><a href="#1-路由传值" class="headerlink" title="1.路由传值"></a>1.路由传值</h4><p>a.在 main.js routes 中配置路由匹配规则<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">  routes: [</div><div class="line">  &#123;</div><div class="line">    <span class="attr">path</span>: <span class="string">'/xxx/:id'</span>,</div><div class="line">    <span class="attr">component</span>: xxx</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<p>b.在点击跳转的 router-link 标签中写上路径和参数<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"'/xxx/' + this.id"</span>&gt;</span><span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>c.在跳转之后的页面，使用 $route.params 获取值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  created () &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.$route.params.id)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="2-父组件向子组件传值"><a href="#2-父组件向子组件传值" class="headerlink" title="2.父组件向子组件传值"></a>2.父组件向子组件传值</h4><p>a.父组件在子组件占位符上，以属性名=参数的形式写上要传递的值<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">subComp</span> <span class="attr">:fatherToSon:</span>"<span class="attr">this.value</span>"&gt;</span><span class="tag">&lt;/<span class="name">subComp</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>b.子组件在 props 中写上子组件占位符的属性名<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="attr">props</span>: [<span class="string">'fatherToSon'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>c.子组件使用 this.属性名 获取值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  created () &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.fatherToSon)</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">props</span>: [<span class="string">'fatherToSon'</span>]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="3-子组件向父组件传值"><a href="#3-子组件向父组件传值" class="headerlink" title="3.子组件向父组件传值"></a>3.子组件向父组件传值</h4><p>a.子组件中定义触发事件，写上自定义函数<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"sonToFather"</span>&gt;</span>子组件向父组件传值<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>b.子组件在自定义函数中使用 $emit 触发父组件函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  data () &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">son</span>: <span class="number">222</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    sonToFather () &#123;</div><div class="line">      <span class="keyword">this</span>.$emit(<span class="string">'getSonValue'</span>, <span class="keyword">this</span>.son)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>c.父组件在子组件占位符上，使用 v-on 监听子组件使用 $emit 触发的函数<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">subComp</span> @<span class="attr">getSonValue</span>=<span class="string">"sonValue"</span>&gt;</span><span class="tag">&lt;/<span class="name">subCome</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>d.父组件自定义函数中通过参数传递获取值<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    sonValue (value) &#123;</div><div class="line">      <span class="built_in">console</span>.log(value)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="4-非父子组件传值"><a href="#4-非父子组件传值" class="headerlink" title="4.非父子组件传值"></a>4.非父子组件传值</h4><p>a.新建一个独立公共的vue实例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vue()</div></pre></td></tr></table></figure></p>
+<p>b.发送方定义触发条件，写上自定义函数<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">"notFatherAndSon"</span>&gt;</span>非父子组件传值<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>c.发送方导入公共vue实例，并使用 $emit 触发父组件函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> bus <span class="keyword">from</span> <span class="string">'../common/common.js'</span></div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  data () &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">msg</span>: <span class="string">'你好Vue'</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    notFatherAndSon () &#123;</div><div class="line">      bus.$emit(<span class="string">'getNotFatherAndSon'</span>, <span class="keyword">this</span>.msg)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>d.接收方导入公共vue实例，并使用 $on 监听发送发使用 $emit 触发的函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> bus <span class="keyword">from</span> <span class="string">'../common/common.js'</span></div><div class="line"></div><div class="line">bus.$on(<span class="string">'getNotFatherAndSon'</span>, (value) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(value)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>学习笔记，根据自己理解简单整理的，不对的地方望指正，非常感谢。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术控/">技术控</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2017/12/02/vue传值/" data-title="vue传值 | Ordinary road" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/10/06/vue使用router-link跳外网址的问题/"  title="Vue使用 router-link 链外部网址时出现的问题">
+ <strong>下一篇：</strong><br/> 
+ <span>Vue使用 router-link 链外部网址时出现的问题
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-路由传值"><span class="toc-number">1.</span> <span class="toc-text">1.路由传值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-父组件向子组件传值"><span class="toc-number">2.</span> <span class="toc-text">2.父组件向子组件传值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-子组件向父组件传值"><span class="toc-number">3.</span> <span class="toc-text">3.子组件向父组件传值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-非父子组件传值"><span class="toc-number">4.</span> <span class="toc-text">4.非父子组件传值</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/技术控/" title="技术控">技术控<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活控/" title="生活控">生活控<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/新人报道/" title="新人报道">新人报道<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 学习笔记，根据自己理解简单整理的，不对的地方望指正，非常感谢！ <br/>
+			邮箱：675185504@qq.com</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="xu">xu</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

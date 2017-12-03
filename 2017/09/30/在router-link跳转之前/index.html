@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>鼠标hover时transiton的问题 | Ordinary road</title>
+    <title>vue router-link 路由跳转之前触发事件 | Ordinary road</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xu">
     
 
     
-    <meta name="description" content="问题一: transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。css代码:12345678910.box&amp;#123;    width: 100px;    height: 100px;    margin: 100px auto;    background-color: red;&amp;#125;.box:hover&amp;#123;    bord">
+    <meta name="description" content="一般情况下，路由跳转之前不会触发函数 1&amp;lt;router-link :to=&quot;&apos;/click&apos;&quot; @click=&quot;getClick&quot;&amp;gt;点击&amp;lt;/router-link&amp;gt; 1234567export default &amp;#123;    methods: &amp;#123;        getClick () &amp;#123;  // getClick 函数不会被触发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="鼠标hover时transiton的问题">
-<meta property="og:url" content="http://yoursite.com/2017/05/28/hover时设置过渡属性的问题/index.html">
+<meta property="og:title" content="vue router-link 路由跳转之前触发事件">
+<meta property="og:url" content="http://yoursite.com/2017/09/30/在router-link跳转之前/index.html">
 <meta property="og:site_name" content="Ordinary road">
-<meta property="og:description" content="问题一: transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。css代码:12345678910.box&amp;#123;    width: 100px;    height: 100px;    margin: 100px auto;    background-color: red;&amp;#125;.box:hover&amp;#123;    bord">
-<meta property="og:updated_time" content="2017-12-03T12:24:46.399Z">
+<meta property="og:description" content="一般情况下，路由跳转之前不会触发函数 1&amp;lt;router-link :to=&quot;&apos;/click&apos;&quot; @click=&quot;getClick&quot;&amp;gt;点击&amp;lt;/router-link&amp;gt; 1234567export default &amp;#123;    methods: &amp;#123;        getClick () &amp;#123;  // getClick 函数不会被触发">
+<meta property="og:updated_time" content="2017-12-03T12:23:27.161Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="鼠标hover时transiton的问题">
-<meta name="twitter:description" content="问题一: transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。css代码:12345678910.box&amp;#123;    width: 100px;    height: 100px;    margin: 100px auto;    background-color: red;&amp;#125;.box:hover&amp;#123;    bord">
+<meta name="twitter:title" content="vue router-link 路由跳转之前触发事件">
+<meta name="twitter:description" content="一般情况下，路由跳转之前不会触发函数 1&amp;lt;router-link :to=&quot;&apos;/click&apos;&quot; @click=&quot;getClick&quot;&amp;gt;点击&amp;lt;/router-link&amp;gt; 1234567export default &amp;#123;    methods: &amp;#123;        getClick () &amp;#123;  // getClick 函数不会被触发">
 
     
     <link rel="alternative" href="/atom.xml" title="Ordinary road" type="application/atom+xml">
@@ -80,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/05/28/hover时设置过渡属性的问题/" title="鼠标hover时transiton的问题" itemprop="url">鼠标hover时transiton的问题</a>
+      <a href="/2017/09/30/在router-link跳转之前/" title="vue router-link 路由跳转之前触发事件" itemprop="url">vue router-link 路由跳转之前触发事件</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
 		
   <p class="article-time">
-    <time datetime="2017-05-28T10:30:53.000Z" itemprop="datePublished"> 发表于 2017-05-28</time>
+    <time datetime="2017-09-30T08:12:44.000Z" itemprop="datePublished"> 发表于 2017-09-30</time>
     
   </p>
 </header>
@@ -96,14 +96,17 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题一-transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。"><span class="toc-number">1.</span> <span class="toc-text">问题一: transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题二-transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。"><span class="toc-number">2.</span> <span class="toc-text">问题二: transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#方式一-在事件后面添加修饰符-native"><span class="toc-number">1.</span> <span class="toc-text">方式一: 在事件后面添加修饰符 native</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方式二：使用编程式导航-router-push"><span class="toc-number">2.</span> <span class="toc-text">方式二：使用编程式导航 router.push</span></a></li></ol>
 		
 		</div>
 		
-		<h3 id="问题一-transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。"><a href="#问题一-transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。" class="headerlink" title="问题一: transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。"></a>问题一: transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。</h3><p>css代码:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">100px</span> auto;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span>&#123;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">transition</span>: all <span class="number">1s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>html代码:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h3 id="问题二-transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。"><a href="#问题二-transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。" class="headerlink" title="问题二: transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。"></a>问题二: transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。</h3><p>css代码:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">100px</span> auto;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">    <span class="attribute">transition</span>: all <span class="number">1s</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span>&#123;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>写的不好的地方,望大家多多指正,小弟感激不尽!</p>
+		<p>一般情况下，路由跳转之前不会触发函数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"'/click'"</span> @<span class="attr">click</span>=<span class="string">"getClick"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">        getClick () &#123;  <span class="comment">// getClick 函数不会被触发</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'跳转之前打印'</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>解决方式有两种</p>
+<h4 id="方式一-在事件后面添加修饰符-native"><a href="#方式一-在事件后面添加修饰符-native" class="headerlink" title="方式一: 在事件后面添加修饰符 native"></a>方式一: 在事件后面添加修饰符 native</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"'/click'"</span> @<span class="attr">click.native</span>=<span class="string">"getClick"</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="方式二：使用编程式导航-router-push"><a href="#方式二：使用编程式导航-router-push" class="headerlink" title="方式二：使用编程式导航 router.push"></a>方式二：使用编程式导航 router.push</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">        getClick () &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'跳转之前打印'</span>)</div><div class="line">            <span class="keyword">this</span>.$router.push(&#123;<span class="attr">path</span>: <span class="string">'/click'</span>&#125;)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>学习笔记，根据自己理解简单整理的，不对的地方望指正，非常感谢。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -121,7 +124,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/05/28/hover时设置过渡属性的问题/" data-title="鼠标hover时transiton的问题 | Ordinary road" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2017/09/30/在router-link跳转之前/" data-title="vue router-link 路由跳转之前触发事件 | Ordinary road" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -135,18 +138,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/06/01/transform属性中origin原点的取值/" title="transform属性中origin原点的取值">
+ <a href="/2017/10/06/vue使用router-link跳外网址的问题/" title="Vue使用 router-link 链外部网址时出现的问题">
   <strong>上一篇：</strong><br/>
   <span>
-  transform属性中origin原点的取值</span>
+  Vue使用 router-link 链外部网址时出现的问题</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/05/25/让元素居中显示的方式/"  title="让子元素在父元素中居中显示的方式">
+<a href="/2017/08/18/移动端判断滑屏的手势方向/"  title="移动端利用touch事件判断滑屏手势的方向">
  <strong>下一篇：</strong><br/> 
- <span>让子元素在父元素中居中显示的方式
+ <span>移动端利用touch事件判断滑屏手势的方向
 </span>
 </a>
 </div>
@@ -161,7 +164,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题一-transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。"><span class="toc-number">1.</span> <span class="toc-text">问题一: transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题二-transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。"><span class="toc-number">2.</span> <span class="toc-text">问题二: transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#方式一-在事件后面添加修饰符-native"><span class="toc-number">1.</span> <span class="toc-text">方式一: 在事件后面添加修饰符 native</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方式二：使用编程式导航-router-push"><span class="toc-number">2.</span> <span class="toc-text">方式二：使用编程式导航 router.push</span></a></li></ol>
  
   </div>
 
