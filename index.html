@@ -81,6 +81,258 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2018/01/28/CSS3calc/" title="CSS3 的 calc()" itemprop="url">CSS3 的 calc()</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-28T14:46:05.000Z" itemprop="datePublished"> 发表于 2018-01-28</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p>浏览器支持IE9+、FF4.0+、Chrome19+、Safari6+<br>calc() 支持四则运算 + - * /<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="built_in">calc</span>(100% - 20px);</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 或者 */</span></div><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">90%</span>; <span class="comment">/* 写给不支持calc()的浏览器 */</span></div><div class="line">    <span class="attribute">widht</span>: <span class="built_in">calc</span>(100% - (10px + 5px) * <span class="number">2</span>);</div><div class="line">    <span class="attribute">widht</span>: <span class="built_in">-moz-calc</span>(100% - (10px + 5px) * <span class="number">2</span>);</div><div class="line">    <span class="attribute">widht</span>: <span class="built_in">-webkit-calc</span>(100% - (10px + 5px) * <span class="number">2</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>学习笔记，根据自己理解简单整理的，不对的地方望指正，非常感谢。</p>
+</blockquote>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术控/">技术控</a>
+</div>
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/27/单独操作v-for的列表项/" title="单独操作 v-for 的列表项" itemprop="url">单独操作 v-for 的列表项</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-27T10:38:02.000Z" itemprop="datePublished"> 发表于 2018-01-27</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p>1.根据列表元素索引来控制</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"(item, index) in items"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>  @<span class="attr">click</span>=<span class="string">"isShow(index)"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-show</span>=<span class="string">"activeIndex === index"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="attr">data</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">activeIndex</span>: <span class="number">-1</span> <span class="comment">// 初始化索引</span></div><div class="line">        &#125;;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">        isShowInfo(index)&#123;</div><div class="line">            <span class="keyword">this</span>.activeIndex = index</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>2.将列表每一项创建为单独的一个组件，然后每个组件都有自己独立的标识</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--父组件--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"(item, index) in items"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">child</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--子组件--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"(item, index) in items"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>  @<span class="attr">click</span>=<span class="string">"isShow"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-show</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">    data() &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">isActive</span>: <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">        isShow() &#123;</div><div class="line">            <span class="keyword">this</span>.isActive = !<span class="keyword">this</span>.isActive;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>学习笔记，根据自己理解简单整理的，不对的地方望指正，非常感谢。</p>
+</blockquote>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术控/">技术控</a>
+</div>
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/13/解决css动画导致的抖动和文字模糊/" title="解决 CSS 动画导致的抖动和文字模糊" itemprop="url">解决 CSS 动画导致的抖动和文字模糊</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-13T03:41:02.000Z" itemprop="datePublished"> 发表于 2018-01-13</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <blockquote>
+<p>解决办法：</p>
+<ol>
+<li>给动画的元素设置层级；</li>
+<li>将元素的高度设置为偶数； </li>
+<li>位置设固定值；</li>
+<li>将transform: translate(-50%, -50%)中的y轴单位改成px；</li>
+<li>改成transform: translate(-50%, -52%)（如果52%不行则从51%每个百分比尝试）；</li>
+<li>transform: translate3d(0, -2px, 0)。</li>
+</ol>
+<p>学习笔记，根据自己理解简单整理的，不对的地方望指正，非常感谢。</p>
+</blockquote>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术控/">技术控</a>
+</div>
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/06/解决v-for出来的元素transition过渡问题/" title="解决 v-for 出来的元素 transition 过渡问题" itemprop="url">解决 v-for 出来的元素 transition 过渡问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-06T14:44:42.000Z" itemprop="datePublished"> 发表于 2018-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">"carousel-fade"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel-li"</span></span></div><div class="line">        <span class="attr">v-for</span>=<span class="string">"(item, index) in banners"</span> <span class="attr">:key</span>=<span class="string">"index"</span></div><div class="line">        <span class="attr">v-show</span>=<span class="string">"index === pageNumber"</span>&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"item.sourceUrl"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"item.imgUrl"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">transition</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.carousel-fade-enter-active</span>, <span class="selector-class">.carousel-fade-leave-active</span>&#123;</div><div class="line">    <span class="attribute">transition</span>: all <span class="number">1.3s</span> ease;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.carousel-fade-enter</span>, <span class="selector-class">.carousel-fade-leave-to</span>&#123;</div><div class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>vue报错: [Vue warn]: <transition> can only be used on a single element. Use <transition-group> for lists.</transition-group></transition></p>
+<p>解决办法：<br>v-show改为v-if,v-show:会渲染全部MOD并通过样式隐藏，v-if:不会渲染全部，只会渲染满足条件的MOD。</p>
+<p>学习笔记，根据自己理解简单整理的，不对的地方望指正，非常感谢。</p>
+</blockquote>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术控/">技术控</a>
+</div>
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2017/12/02/vue传值/" title="vue传值" itemprop="url">vue传值</a>
   </h1>
   <p class="article-author">By
@@ -438,273 +690,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/06/16/页面跳转的实现方式/" title="简单实现点击后页面跳转的方法" itemprop="url">简单实现点击后页面跳转的方法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
-		
-  <p class="article-time">
-    <time datetime="2017-06-16T02:11:14.000Z" itemprop="datePublished"> 发表于 2017-06-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="同一页面内跳转到指定元素"><a href="#同一页面内跳转到指定元素" class="headerlink" title="同一页面内跳转到指定元素"></a>同一页面内跳转到指定元素</h2><h3 id="方法1：给a标签设置锚点"><a href="#方法1：给a标签设置锚点" class="headerlink" title="方法1：给a标签设置锚点"></a>方法1：给a标签设置锚点</h3><p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#abc"</span>&gt;</span>a标签<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"height: 1000px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"abc"</span>&gt;</span>p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>点击a标签的时候，页面会跳转到p标签所在的位置。</p>
-<p>a标签的href属性只给#时，会跳转到页面最顶部，可实现“回到顶部”的功能。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>a标签<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="方法2：设置-location-hash-属性"><a href="#方法2：设置-location-hash-属性" class="headerlink" title="方法2：设置 location.hash 属性"></a>方法2：设置 location.hash 属性</h3><p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>跳转<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"height: 1000px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"abc"</span>&gt;</span>p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>javaScript<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.querySelector(<span class="string">"button"</span>);</div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    location.hash = <span class="string">"#abc"</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>通过设置 window 的属性 location.hash 锚点值为指定元素的id，即可实现跳转到指定元素。</p>
-<h2 id="不同页面的跳转"><a href="#不同页面的跳转" class="headerlink" title="不同页面的跳转"></a>不同页面的跳转</h2><h3 id="方法1：设置a标签的href属性"><a href="#方法1：设置a标签的href属性" class="headerlink" title="方法1：设置a标签的href属性"></a>方法1：设置a标签的href属性</h3><p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"B.html"</span>&gt;</span>跳转<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>设置a标签的href属性值为要跳转的页面的路径，即可实现从A页面跳转到B页面。</p>
-<h3 id="方法2：设置-location-href-属性"><a href="#方法2：设置-location-href-属性" class="headerlink" title="方法2：设置 location.href 属性"></a>方法2：设置 location.href 属性</h3><p>HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>跳转<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>javaScript<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.querySelector(<span class="string">"button"</span>);</div><div class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    location.href = <span class="string">"B.html"</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>通过设置 window 的属性 location.href 值为要跳转的页面路径，即可实现实现从A页面跳转到B页面。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/技术控/">技术控</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/06/03/transform关于先平移后旋转和先旋转后平移的问题！/" title="transform属性关于先平移后旋转和先旋转后平移的问题" itemprop="url">transform属性关于先平移后旋转和先旋转后平移的问题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
-		
-  <p class="article-time">
-    <time datetime="2017-06-03T10:53:57.000Z" itemprop="datePublished"> 发表于 2017-06-03</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="1-先平移后旋转"><a href="#1-先平移后旋转" class="headerlink" title="1.先平移后旋转"></a>1.先平移后旋转</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">translate</span>(100<span class="selector-tag">px</span>) <span class="selector-tag">rotate</span>(45<span class="selector-tag">deg</span>);</div></pre></td></tr></table></figure>
-<p>原图:<br><img src="img/transform1.png" alt="transform"></p>
-<p>最后效果:<br><img src="img/transform2.png" alt="transform"></p>
-<p>实现过程: 先在X轴的正方向上平移100px，再顺时针旋转45度。</p>
-<h3 id="2-先旋转后平移"><a href="#2-先旋转后平移" class="headerlink" title="2.先旋转后平移"></a>2.先旋转后平移</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">transform</span>: <span class="selector-tag">rotate</span>(45<span class="selector-tag">deg</span>) <span class="selector-tag">translate</span>(100<span class="selector-tag">px</span>);</div></pre></td></tr></table></figure>
-<p>原图:<br><img src="img/transform1.png" alt="transform"></p>
-<p>最后效果:<br><img src="img/transform3.png" alt="transform"></p>
-<p>实现过程: 先顺时针旋转45度，此时坐标系已跟着元素一起旋转了45度，再向已经改变的X轴正方向上平移100px。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/技术控/">技术控</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/06/01/transform属性中origin原点的取值/" title="transform属性中origin原点的取值" itemprop="url">transform属性中origin原点的取值</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
-		
-  <p class="article-time">
-    <time datetime="2017-06-01T05:28:37.000Z" itemprop="datePublished"> 发表于 2017-06-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="取值1"><a href="#取值1" class="headerlink" title="取值1 :"></a>取值1 :</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-origin: center; // 或 center center,或 50%,或 50% 50%</div></pre></td></tr></table></figure>
-<p>原点在元素的正中心!</p>
-<p><img src="img/1.png" alt="origin"></p>
-<h3 id="取值2"><a href="#取值2" class="headerlink" title="取值2 :"></a>取值2 :</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-origin: top; // 或 top center,或 50% 0</div></pre></td></tr></table></figure>
-<p>原点在元素顶部的中间！</p>
-<p><img src="img/2.png" alt="origin"></p>
-<h3 id="取值3"><a href="#取值3" class="headerlink" title="取值3 :"></a>取值3 :</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-origin: right; // 或 right center,或 center right,或 100%,或 100% 50%</div></pre></td></tr></table></figure>
-<p>原点在元素右边的中间！</p>
-<p><img src="img/3.png" alt="origin"></p>
-<h3 id="取值4"><a href="#取值4" class="headerlink" title="取值4 :"></a>取值4 :</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-origin: bottom; // 或 bottom center,或 center bottom,或 50% 100%</div></pre></td></tr></table></figure>
-<p>原点在元素底部的中间！</p>
-<p><img src="img/4.png" alt="origin"></p>
-<h3 id="取值5"><a href="#取值5" class="headerlink" title="取值5 :"></a>取值5 :</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-origin: left; // 或 left center,或 center left,或 0, 或 0 50%</div></pre></td></tr></table></figure>
-<p>原点在元素左边的中间！</p>
-<p><img src="img/5.png" alt="origin"></p>
-<h3 id="取值6"><a href="#取值6" class="headerlink" title="取值6 :"></a>取值6 :</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-origin: left top; // 或 left top,或 0 0</div></pre></td></tr></table></figure>
-<p>原点在元素左上角！</p>
-<p><img src="img/6.png" alt="origin"></p>
-<h3 id="取值7"><a href="#取值7" class="headerlink" title="取值7 :"></a>取值7 :</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-origin: right top; // 或 top right,或 100% 0</div></pre></td></tr></table></figure>
-<p>原点在元素右上角！</p>
-<p><img src="img/7.png" alt="origin"></p>
-<h3 id="取值8"><a href="#取值8" class="headerlink" title="取值8 :"></a>取值8 :</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-origin: right bottom; // 或 bottom right,或 100% 100%</div></pre></td></tr></table></figure>
-<p>原点在元素右下角！</p>
-<p><img src="img/8.png" alt="origin"></p>
-<h3 id="取值9"><a href="#取值9" class="headerlink" title="取值9 :"></a>取值9 :</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">transform-origin: left bottom;// 或 bottom left,或 0 100%</div></pre></td></tr></table></figure>
-<p>原点在元素左下角！</p>
-<p><img src="img/9.png" alt="origin"></p>
-<h3 id="CSS变换中的旋转rotate-、缩放scale-、和倾斜skew-，都可以通过transform-origin属性来改变元素对象的原点位置；"><a href="#CSS变换中的旋转rotate-、缩放scale-、和倾斜skew-，都可以通过transform-origin属性来改变元素对象的原点位置；" class="headerlink" title="CSS变换中的旋转rotate()、缩放scale()、和倾斜skew()，都可以通过transform:origin属性来改变元素对象的原点位置；"></a>CSS变换中的旋转rotate()、缩放scale()、和倾斜skew()，都可以通过transform:origin属性来改变元素对象的原点位置；</h3><h3 id="translate-始终根据元素对象中心点进行位移。"><a href="#translate-始终根据元素对象中心点进行位移。" class="headerlink" title="translate()始终根据元素对象中心点进行位移。"></a>translate()始终根据元素对象中心点进行位移。</h3>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/技术控/">技术控</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/05/28/hover时设置过渡属性的问题/" title="鼠标hover时transiton的问题" itemprop="url">鼠标hover时transiton的问题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
-		
-  <p class="article-time">
-    <time datetime="2017-05-28T10:30:53.000Z" itemprop="datePublished"> 发表于 2017-05-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="问题一-transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。"><a href="#问题一-transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。" class="headerlink" title="问题一: transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。"></a>问题一: transition设置在hover中，移入时有过渡动画；但是移出后，立即回到原来的样式，没有过渡动画效果。</h3><p>css代码:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">100px</span> auto;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span>&#123;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">    <span class="attribute">transition</span>: all <span class="number">1s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>html代码:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h3 id="问题二-transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。"><a href="#问题二-transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。" class="headerlink" title="问题二: transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。"></a>问题二: transition设置在元素中，移入时有过渡动画；移出后，也有过渡动画回到原来的样式。</h3><p>css代码:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">100px</span> auto;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">    <span class="attribute">transition</span>: all <span class="number">1s</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span>&#123;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>写的不好的地方,望大家多多指正,小弟感激不尽!</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/技术控/">技术控</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -726,7 +711,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/技术控/" title="技术控">技术控<sup>12</sup></a></li>
+			<li><a href="/categories/技术控/" title="技术控">技术控<sup>16</sup></a></li>
 		  
 		
 		  
@@ -814,7 +799,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
 		
 		<a href="/about" target="_blank" title="xu">xu</a>
 		

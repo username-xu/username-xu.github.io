@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>点击跳转的实现方式 | Ordinary road</title>
+    <title>CSS3 的 calc() | Ordinary road</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xu">
     
 
     
-    <meta name="description" content="HTML,CSS,javaScripr">
+    <meta name="description" content="浏览器支持IE9+、FF4.0+、Chrome19+、Safari6+calc() 支持四则运算 + - * /12345678910.box&amp;#123;    width: calc(100% - 20px);&amp;#125;/* 或者 */.box&amp;#123;    width: 90%; /* 写给不支持calc()的浏览器 */    widht: calc(100% - (10px + 5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="点击跳转的实现方式">
-<meta property="og:url" content="http://yoursite.com/2017/06/17/点击跳转的实现方式/index.html">
+<meta property="og:title" content="CSS3 的 calc()">
+<meta property="og:url" content="http://yoursite.com/2018/01/28/CSS3calc/index.html">
 <meta property="og:site_name" content="Ordinary road">
-<meta property="og:description" content="HTML,CSS,javaScripr">
-<meta property="og:updated_time" content="2017-06-17T05:50:13.935Z">
+<meta property="og:description" content="浏览器支持IE9+、FF4.0+、Chrome19+、Safari6+calc() 支持四则运算 + - * /12345678910.box&amp;#123;    width: calc(100% - 20px);&amp;#125;/* 或者 */.box&amp;#123;    width: 90%; /* 写给不支持calc()的浏览器 */    widht: calc(100% - (10px + 5">
+<meta property="og:updated_time" content="2018-01-29T15:05:26.288Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="点击跳转的实现方式">
-<meta name="twitter:description" content="HTML,CSS,javaScripr">
+<meta name="twitter:title" content="CSS3 的 calc()">
+<meta name="twitter:description" content="浏览器支持IE9+、FF4.0+、Chrome19+、Safari6+calc() 支持四则运算 + - * /12345678910.box&amp;#123;    width: calc(100% - 20px);&amp;#125;/* 或者 */.box&amp;#123;    width: 90%; /* 写给不支持calc()的浏览器 */    widht: calc(100% - (10px + 5">
 
     
     <link rel="alternative" href="/atom.xml" title="Ordinary road" type="application/atom+xml">
@@ -80,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/06/17/点击跳转的实现方式/" title="点击跳转的实现方式" itemprop="url">点击跳转的实现方式</a>
+      <a href="/2018/01/28/CSS3calc/" title="CSS3 的 calc()" itemprop="url">CSS3 的 calc()</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
 		
   <p class="article-time">
-    <time datetime="2017-06-17T05:50:13.000Z" itemprop="datePublished"> 发表于 2017-06-17</time>
+    <time datetime="2018-01-28T14:46:05.000Z" itemprop="datePublished"> 发表于 2018-01-28</time>
     
   </p>
 </header>
@@ -100,10 +100,19 @@
 		
 		</div>
 		
-		  
+		<blockquote>
+<p>浏览器支持IE9+、FF4.0+、Chrome19+、Safari6+<br>calc() 支持四则运算 + - * /<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="built_in">calc</span>(100% - 20px);</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 或者 */</span></div><div class="line"><span class="selector-class">.box</span>&#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">90%</span>; <span class="comment">/* 写给不支持calc()的浏览器 */</span></div><div class="line">    <span class="attribute">widht</span>: <span class="built_in">calc</span>(100% - (10px + 5px) * <span class="number">2</span>);</div><div class="line">    <span class="attribute">widht</span>: <span class="built_in">-moz-calc</span>(100% - (10px + 5px) * <span class="number">2</span>);</div><div class="line">    <span class="attribute">widht</span>: <span class="built_in">-webkit-calc</span>(100% - (10px + 5px) * <span class="number">2</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>学习笔记，根据自己理解简单整理的，不对的地方望指正，非常感谢。</p>
+</blockquote>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/技术控/">技术控</a>
+</div>
 
 
 </div>
@@ -112,7 +121,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/06/17/点击跳转的实现方式/" data-title="点击跳转的实现方式 | Ordinary road" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2018/01/28/CSS3calc/" data-title="CSS3 的 calc() | Ordinary road" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -125,19 +134,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/06/28/遇到的button按钮/" title="button按钮的注意处">
-  <strong>上一篇：</strong><br/>
-  <span>
-  button按钮的注意处</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/06/16/页面跳转的实现方式/"  title="简单实现点击后页面跳转的方法">
+<a href="/2018/01/27/单独操作v-for的列表项/"  title="单独操作 v-for 的列表项">
  <strong>下一篇：</strong><br/> 
- <span>简单实现点击后页面跳转的方法
+ <span>单独操作 v-for 的列表项
 </span>
 </a>
 </div>
@@ -169,7 +170,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/技术控/" title="技术控">技术控<sup>9</sup></a></li>
+			<li><a href="/categories/技术控/" title="技术控">技术控<sup>16</sup></a></li>
 		  
 		
 		  
@@ -237,8 +238,8 @@
 	
 	
 	<section class="info">
-		<p> Hello，我是xu！写的不对的地方，烦请指出，小弟一点积极改正，感激不尽！ <br/>
-			邮箱：yaozuxu@foxmail.com</p>
+		<p> 学习笔记，根据自己理解简单整理的，不对的地方望指正，非常感谢！ <br/>
+			邮箱：675185504@qq.com</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
@@ -257,7 +258,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
 		
 		<a href="/about" target="_blank" title="xu">xu</a>
 		

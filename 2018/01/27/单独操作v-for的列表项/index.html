@@ -4,23 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>button按钮的注意处 | Ordinary road</title>
+    <title>单独操作 v-for 的列表项 | Ordinary road</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="xu">
     
 
     
-    <meta name="description" content="最近在项目开发中，遇到一个问题，当点击form标签包裹的button按钮后，就同步提交并刷新了，只能在最后return false来解决的，这岂不是麻烦的很！于是去度娘上查了一下，发现是type属性在作祟。 我们先来看看type属性的取值1. type=&amp;quot;submit&amp;quot;  button 是提交按钮（是 IE 之外的所有浏览器的默认值） 2. type=&amp;quot;button&amp;">
+    <meta name="description" content="1.根据列表元素索引来控制  12345&amp;lt;template v-for=&quot;(item, index) in items&quot;&amp;gt;    &amp;lt;div  @click=&quot;isShow(index)&quot;&amp;gt;        &amp;lt;div v-show=&quot;activeIndex === index&quot;&amp;gt;&amp;lt;/div&amp;gt;    &amp;lt;/div&amp;gt;&amp;lt;/template&amp;g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="button按钮的注意处">
-<meta property="og:url" content="http://yoursite.com/2017/06/28/遇到的button按钮/index.html">
+<meta property="og:title" content="单独操作 v-for 的列表项">
+<meta property="og:url" content="http://yoursite.com/2018/01/27/单独操作v-for的列表项/index.html">
 <meta property="og:site_name" content="Ordinary road">
-<meta property="og:description" content="最近在项目开发中，遇到一个问题，当点击form标签包裹的button按钮后，就同步提交并刷新了，只能在最后return false来解决的，这岂不是麻烦的很！于是去度娘上查了一下，发现是type属性在作祟。 我们先来看看type属性的取值1. type=&amp;quot;submit&amp;quot;  button 是提交按钮（是 IE 之外的所有浏览器的默认值） 2. type=&amp;quot;button&amp;">
-<meta property="og:updated_time" content="2017-06-28T07:32:07.711Z">
+<meta property="og:description" content="1.根据列表元素索引来控制  12345&amp;lt;template v-for=&quot;(item, index) in items&quot;&amp;gt;    &amp;lt;div  @click=&quot;isShow(index)&quot;&amp;gt;        &amp;lt;div v-show=&quot;activeIndex === index&quot;&amp;gt;&amp;lt;/div&amp;gt;    &amp;lt;/div&amp;gt;&amp;lt;/template&amp;g">
+<meta property="og:updated_time" content="2018-01-29T15:14:36.718Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="button按钮的注意处">
-<meta name="twitter:description" content="最近在项目开发中，遇到一个问题，当点击form标签包裹的button按钮后，就同步提交并刷新了，只能在最后return false来解决的，这岂不是麻烦的很！于是去度娘上查了一下，发现是type属性在作祟。 我们先来看看type属性的取值1. type=&amp;quot;submit&amp;quot;  button 是提交按钮（是 IE 之外的所有浏览器的默认值） 2. type=&amp;quot;button&amp;">
+<meta name="twitter:title" content="单独操作 v-for 的列表项">
+<meta name="twitter:description" content="1.根据列表元素索引来控制  12345&amp;lt;template v-for=&quot;(item, index) in items&quot;&amp;gt;    &amp;lt;div  @click=&quot;isShow(index)&quot;&amp;gt;        &amp;lt;div v-show=&quot;activeIndex === index&quot;&amp;gt;&amp;lt;/div&amp;gt;    &amp;lt;/div&amp;gt;&amp;lt;/template&amp;g">
 
     
     <link rel="alternative" href="/atom.xml" title="Ordinary road" type="application/atom+xml">
@@ -80,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/06/28/遇到的button按钮/" title="button按钮的注意处" itemprop="url">button按钮的注意处</a>
+      <a href="/2018/01/27/单独操作v-for的列表项/" title="单独操作 v-for 的列表项" itemprop="url">单独操作 v-for 的列表项</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="xu" target="_blank" itemprop="author">xu</a>
 		
   <p class="article-time">
-    <time datetime="2017-06-28T06:56:01.000Z" itemprop="datePublished"> 发表于 2017-06-28</time>
+    <time datetime="2018-01-27T10:38:02.000Z" itemprop="datePublished"> 发表于 2018-01-27</time>
     
   </p>
 </header>
@@ -96,18 +96,24 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#我们先来看看type属性的取值"><span class="toc-number">1.</span> <span class="toc-text">我们先来看看type属性的取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自己总结了一下"><span class="toc-number">2.</span> <span class="toc-text">自己总结了一下</span></a></li></ol>
+			
 		
 		</div>
 		
-		<p>最近在项目开发中，遇到一个问题，当点击form标签包裹的button按钮后，就同步提交并刷新了，只能在最后return false来解决的，这岂不是麻烦的很！于是去度娘上查了一下，发现是type属性在作祟。</p>
-<h3 id="我们先来看看type属性的取值"><a href="#我们先来看看type属性的取值" class="headerlink" title="我们先来看看type属性的取值"></a>我们先来看看type属性的取值</h3><pre><code>1. type=&quot;submit&quot;  button 是提交按钮（是 IE 之外的所有浏览器的默认值）
-2. type=&quot;button&quot;  button 是可点击的按钮（IE 的默认值）
-3. type=&quot;reset&quot;  button 是重置按钮（清除表单数据）
-</code></pre><h3 id="自己总结了一下"><a href="#自己总结了一下" class="headerlink" title="自己总结了一下"></a>自己总结了一下</h3><pre><code>1.type属性设置为对应的值，点击会触发对应的事件；
-2.没有设置type属性，在IE浏览器中，默认为button一个单纯的按钮；
-3.没有设置type属性，除开IE浏览器之外的其他浏览器中，默认为submit，会触发提交事件。
-</code></pre>  
+		<blockquote>
+<p>1.根据列表元素索引来控制</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"(item, index) in items"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>  @<span class="attr">click</span>=<span class="string">"isShow(index)"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-show</span>=<span class="string">"activeIndex === index"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    <span class="attr">data</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">activeIndex</span>: <span class="number">-1</span> <span class="comment">// 初始化索引</span></div><div class="line">        &#125;;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">        isShowInfo(index)&#123;</div><div class="line">            <span class="keyword">this</span>.activeIndex = index</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>2.将列表每一项创建为单独的一个组件，然后每个组件都有自己独立的标识</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--父组件--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"(item, index) in items"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">child</span>&gt;</span><span class="tag">&lt;/<span class="name">child</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--子组件--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-for</span>=<span class="string">"(item, index) in items"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span>  @<span class="attr">click</span>=<span class="string">"isShow"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-show</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">    data() &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">isActive</span>: <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">        isShow() &#123;</div><div class="line">            <span class="keyword">this</span>.isActive = !<span class="keyword">this</span>.isActive;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>学习笔记，根据自己理解简单整理的，不对的地方望指正，非常感谢。</p>
+</blockquote>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -124,7 +130,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://yoursite.com/2017/06/28/遇到的button按钮/" data-title="button按钮的注意处 | Ordinary road" data-tsina="null" class="share clearfix">
+	  <div data-url="http://yoursite.com/2018/01/27/单独操作v-for的列表项/" data-title="单独操作 v-for 的列表项 | Ordinary road" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -138,18 +144,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/07/28/解决移动端iPhone设备点击时出现的半透明的背景/" title="解决移动端iPhone设备点击时出现的半透明的背景">
+ <a href="/2018/01/28/CSS3calc/" title="CSS3 的 calc()">
   <strong>上一篇：</strong><br/>
   <span>
-  解决移动端iPhone设备点击时出现的半透明的背景</span>
+  CSS3 的 calc()</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2017/06/16/页面跳转的实现方式/"  title="简单实现点击后页面跳转的方法">
+<a href="/2018/01/13/解决css动画导致的抖动和文字模糊/"  title="解决 CSS 动画导致的抖动和文字模糊">
  <strong>下一篇：</strong><br/> 
- <span>简单实现点击后页面跳转的方法
+ <span>解决 CSS 动画导致的抖动和文字模糊
 </span>
 </a>
 </div>
@@ -164,7 +170,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#我们先来看看type属性的取值"><span class="toc-number">1.</span> <span class="toc-text">我们先来看看type属性的取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自己总结了一下"><span class="toc-number">2.</span> <span class="toc-text">自己总结了一下</span></a></li></ol>
+ 
  
   </div>
 
